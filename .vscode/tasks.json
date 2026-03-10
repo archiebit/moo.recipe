@@ -1,0 +1,67 @@
+{
+    "version": "2.0.0",
+    "tasks":
+    [
+        {
+            "label": "Assemble project",
+            "type":  "shell",
+            "group": "build",
+            "windows":
+            {
+                "command": "./build.ps1",
+                "args":
+                [
+                    "-Config", "\"${command:cpptools.activeConfigName}\"",
+                    "-Target", "\"cook.exe\""
+                ]
+            },
+            "presentation":
+            {
+                "panel":  "dedicated",
+                "reveal": "always",
+
+                "focus":             true,
+                "clear":             true,
+                "echo":              true,
+                "close":            false,
+                "showReuseMessage": false,
+            },
+            "icon":
+            {
+                "id":    "refresh",
+                "color": "terminal.ansiCyan"
+            },
+            "problemMatcher": [ ]
+        },
+        {
+            "label": "Delete assembly folder",
+            "type":  "shell",
+            "group": "none",
+            "windows":
+            {
+                "command": "./clear.ps1",
+                "args":
+                [
+                    "-Config", "\"${command:cpptools.activeConfigName}\""
+                ]
+            },
+            "presentation":
+            {
+                "panel":  "shared",
+                "reveal": "never",
+
+                "focus":            false,
+                "clear":            false,
+                "echo":             false,
+                "close":             true,
+                "showReuseMessage": false
+            },
+            "icon":
+            {
+                "id":    "trash",
+                "color": "terminal.ansiRed"
+            },
+            "problemMatcher": [ ]
+        }
+    ]
+}
