@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations":
+    [
+        {
+            "name":    "Отладка C++",
+            "type":    "cppdbg",
+            "request": "launch",
+            "cwd":     "${workspaceFolder}\\build\\${command:cpptools.activeConfigName}\\out",
+            "program": "${workspaceFolder}\\build\\${command:cpptools.activeConfigName}\\out\\cook.exe",
+
+            "miDebuggerPath": "gdb",
+            "miDebuggerArgs": "",
+
+            "setupCommands":
+            [
+                { "text": "-enable-pretty-printing"           },
+                { "text": "-gdb-set disassembly-flavor intel" }
+            ]
+        }
+    ]
+}

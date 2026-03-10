@@ -1,0 +1,16 @@
+{
+    "files.associations":
+    {
+        "*.hh": "cpp",
+        "*.cc": "cpp",
+        "*.in": "cpp",
+        "*.tp": "cpp"
+    },
+    "files.exclude":
+    {
+        "**/.git":      true,
+        "**/.gitkeep": false,
+        "**/.github":  false,
+        "**/.vscode":  false
+    }
+}
