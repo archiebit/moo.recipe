@@ -37,6 +37,8 @@ namespace moo
     };
 
 
+    // Special behavior if one of the arguments is
+    // a token category.
     bool operator == ( token_type a, token_type b );
     bool operator != ( token_type a, token_type b );
 }
