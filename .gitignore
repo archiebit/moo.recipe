@@ -1,3 +1,7 @@
 # Output build files.
 build/**
 !build/.gitkeep
+
+
+# Test purpose.
+source/*/test.cc
