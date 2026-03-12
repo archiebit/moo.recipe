@@ -3,7 +3,7 @@
 My attempt to create a silly build system. Just for fun.
 
 > [!NOTE]
-> Under construction!
+> Under construction! See 'development' branch.
 
 
 
