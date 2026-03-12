@@ -38,6 +38,26 @@ namespace moo
 
 
 
+    std::size_t lexeme::get_line( ) const
+    {
+        return line;
+    }
+
+
+    std::size_t lexeme::get_column( ) const
+    {
+        return column;
+    }
+
+
+    std::size_t lexeme::get_length( ) const
+    {
+        return length;
+    }
+
+
+
+
     void lexeme::rewrite( std::size_t line, std::size_t column, std::size_t length )
     {
         this->line   = line;

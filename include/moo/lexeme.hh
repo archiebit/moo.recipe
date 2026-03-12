@@ -24,6 +24,11 @@ namespace moo
         void rewrite( std::size_t line, std::size_t column, std::size_t length );
 
 
+        std::size_t   get_line( ) const;
+        std::size_t get_column( ) const;
+        std::size_t get_length( ) const;
+
+
         operator std::u32string_view( ) const;
 
 
