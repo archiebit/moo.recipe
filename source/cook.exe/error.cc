@@ -6,6 +6,13 @@
 
 
 
+// Global variables.
+namespace moo
+{
+    // Source code.
+    extern std::vector<std::u32string> source;
+}
+
 
 namespace moo
 {
@@ -42,6 +49,49 @@ namespace moo
 
 
         return stream;
+    }
+}
+
+
+namespace moo
+{
+    // Vertical area around lexeme. Two lines up and two lines down.
+    // For fancy printing.
+    struct area
+    {
+        std::size_t line_beg;
+        std::size_t line_end;
+
+
+        static std::size_t const offset = 2;
+    };
+
+
+    static std::vector<area> compute_areas( std::vector<lexeme> const & lexemes )
+    {
+        using ssize = std::make_signed_t<std::size_t>;
+
+
+        std::vector<area> output;
+
+
+        ssize const line_min = 1;
+        ssize const line_max = source.size( );
+
+        for( auto const & element : lexemes )
+        {
+            ssize beg = element.get_line( );
+            ssize end = element.get_line( );
+
+            beg = ( beg >= line_min + area::offset ) ? beg - area::offset : line_min;
+            end = ( end <= line_max - area::offset ) ? end + area::offset : line_max;
+
+
+            output.emplace_back( beg, end );
+        }
+
+
+        return output;
     }
 }
 
@@ -85,6 +135,7 @@ namespace moo
 
     void error::print_lexemes( ) const
     {
+        std::vector<area> areas = compute_areas( lexemes );
         // TODO: Implement error lexemes output.
     }
 }
