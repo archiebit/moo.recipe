@@ -8,8 +8,8 @@ namespace moo
 {
     bool operator == ( token_type a, token_type b )
     {
-        unsigned short group[ 2 ] { a & 0xFFFF'0000, b & 0xFFFF'0000 };
-        unsigned short value[ 2 ] { a & 0x0000'FFFF, b & 0x0000'FFFF };
+        unsigned short group[ 2 ] { static_cast<unsigned short>( a & 0xFFFF'0000 ), static_cast<unsigned short>( b & 0xFFFF'0000 ) };
+        unsigned short value[ 2 ] { static_cast<unsigned short>( a & 0x0000'FFFF ), static_cast<unsigned short>( b & 0x0000'FFFF ) };
 
 
         if( group[ 0 ] != group[ 1 ] )
