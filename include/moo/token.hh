@@ -1,6 +1,9 @@
 #ifndef MOO_TOKEN_HH
 #define MOO_TOKEN_HH
 
+// STD stuff.
+#include <vector>
+
 // Project.
 #include <moo/lexeme.hh>
 
@@ -75,6 +78,27 @@ namespace moo
     private:
         token_type option;
         lexeme     source;
+    };
+
+
+    class stream
+    {
+    public:
+       ~stream( );
+        stream( std::vector<token> && tokens );
+
+
+        token const & peek( ) const;
+        token const & read( );
+
+
+        void consume( std::size_t count );
+        void restore( std::size_t count );
+
+
+    private:
+        std::size_t        cursor;
+        std::vector<token> tokens;
     };
 }
 

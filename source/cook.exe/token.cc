@@ -1,6 +1,9 @@
 // Project.
 #include <moo/token.hh>
 
+// STD stuff.
+#include <utility>
+
 
 
 
@@ -116,5 +119,64 @@ namespace moo
     token::operator     lexeme &( )
     {
         return source;
+    }
+}
+
+
+namespace moo
+{
+    stream::~stream( ) = default;
+
+
+    stream::stream( std::vector<token> && tokens )
+    :   cursor( 0 )
+    ,   tokens( std::move( tokens ) )
+    { }
+
+
+
+
+    token const & stream::peek( ) const
+    {
+        return tokens[ cursor ];
+    }
+
+
+    token const & stream::read( )
+    {
+        if( cursor == tokens.size( ) - 1 )
+        {
+            return tokens[ cursor ];
+        }
+        else
+        {
+            return tokens[ cursor++ ];
+        }
+    }
+
+
+
+
+    void stream::consume( std::size_t count )
+    {
+        cursor += count;
+
+
+        if( cursor >= tokens.size( ) )
+        {
+            cursor = tokens.size( ) - 1;
+        }
+    }
+
+
+    void stream::restore( std::size_t count )
+    {
+        cursor -= count;
+
+
+        if( cursor >= tokens.size( ) )
+        {
+            cursor = 0;
+        }
     }
 }
