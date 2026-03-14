@@ -24,6 +24,7 @@ namespace moo
         NONE    = 0x0001 | SPECIAL,
         LINE    = 0x0002 | SPECIAL,
         COMMENT = 0x0003 | SPECIAL,
+        END     = 0x0004 | SPECIAL,
 
         PREPARE = 0x0001 | KEYWORD,
         CONFIG  = 0x0002 | KEYWORD,
@@ -36,7 +37,8 @@ namespace moo
         SAME    = 0x0002 | COMMAND,
         DIFF    = 0x0003 | COMMAND,
 
-        SQUARE  = 0x0001 | ONECHAR
+        SQUARE_OPENED = 0x0001 | ONECHAR,
+        SQUARE_CLOSED = 0x0002 | ONECHAR
     };
 
 
